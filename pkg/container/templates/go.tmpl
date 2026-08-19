@@ -1,4 +1,4 @@
-FROM golang:1.25-alpine AS builder
+FROM golang:1.27-alpine AS builder
 
 {{if .BuildEnv}}
 # Custom build environment variables
@@ -72,7 +72,7 @@ RUN package="{{.MCPPackage}}"; \
 {{end}}
 
 # Final stage - minimal runtime image
-FROM alpine:3.22
+FROM alpine:3.24
 
 {{if .CACertContent}}
 # Add custom CA certificate for runtime
